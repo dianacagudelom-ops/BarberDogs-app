@@ -1,197 +1,518 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BarberDogs App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BarberDogs App</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f7fa;
-      color: #1d2733;
-    }
-
-    .app {
-      max-width: 480px;
-      margin: auto;
-      min-height: 100vh;
-      background: white;
-    }
-
-    header {
-      background: #0b5ed7;
-      color: white;
-      padding: 30px 22px;
-      border-radius: 0 0 25px 25px;
-    }
-
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      font-size: 16px;
-    }
-
-    .content {
-      padding: 22px;
-    }
-
-    .welcome {
-      margin-bottom: 22px;
-    }
-
-    .welcome h2 {
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
-
-    .welcome p {
-      color: #687384;
-    }
-
-    .buttons {
-      display: grid;
-      gap: 14px;
-    }
-
-    .card {
-      border: none;
-      background: white;
-      padding: 20px;
-      border-radius: 18px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      text-align: left;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-    .icon {
-      font-size: 30px;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .card strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .card span {
-      color: #687384;
-      font-size: 14px;
-    }
-
-    .book {
-      background: #e63946;
-      color: white;
-    }
-
-    .book span {
-      color: white;
-    }
-
-    nav {
-      position: sticky;
-      bottom: 0;
-      display: flex;
-      justify-content: space-around;
-      background: white;
-      border-top: 1px solid #ddd;
-      padding: 12px 5px;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      font-size: 13px;
-      color: #555;
-    }
-
-    nav div {
-      font-size: 22px;
-      margin-bottom: 3px;
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f4f7fb;
+ color:#18212b;
+}
+.app{
+ max-width:480px;
+ margin:auto;
+ min-height:100vh;
+ background:white;
+}
+header{
+ background:#102a43;
+ color:white;
+ padding:25px 20px;
+ text-align:center;
+ border-radius:0 0 25px 25px;
+}
+.logo{
+ width:90px;
+ height:90px;
+ border-radius:50%;
+ background:white;
+ object-fit:contain;
+ padding:8px;
+}
+h1{margin:10px 0 4px}
+header p{margin:0;opacity:.85}
+.lang{
+ margin-top:15px;
+}
+.lang button{
+ border:0;
+ border-radius:20px;
+ padding:8px 15px;
+ margin:3px;
+ background:white;
+ color:#102a43;
+}
+.hero{
+ padding:25px 20px 10px;
+}
+.hero h2{font-size:28px;margin-bottom:8px}
+.hero p{color:#667085;line-height:1.5}
+.btn{
+ display:block;
+ width:100%;
+ padding:15px;
+ margin:10px 0;
+ border:0;
+ border-radius:14px;
+ background:#102a43;
+ color:white;
+ font-size:16px;
+ font-weight:bold;
+}
+.btn.red{background:#c62828}
+.btn.light{
+ background:#eef3f8;
+ color:#102a43;
+}
+.cards{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ padding:10px 20px;
+}
+.card{
+ background:#f7f9fc;
+ border-radius:18px;
+ padding:18px 12px;
+ text-align:center;
+ box-shadow:0 2px 8px #00000012;
+}
+.icon{font-size:32px}
+.card h3{font-size:15px;margin:8px 0}
+section{padding:15px 20px}
+section h2{margin-bottom:15px}
+.service{
+ border:1px solid #e4e7ec;
+ border-radius:16px;
+ padding:15px;
+ margin:10px 0;
+}
+.service strong{font-size:17px}
+.service p{color:#667085;margin-bottom:0}
+input,select,textarea{
+ width:100%;
+ padding:13px;
+ margin:7px 0 12px;
+ border:1px solid #d0d5dd;
+ border-radius:10px;
+ font-size:16px;
+}
+footer{
+ text-align:center;
+ padding:30px 20px;
+ color:#667085;
+ background:#f4f7fb;
+ margin-top:20px;
+}
+.hidden{display:none}
+.nav{
+ position:sticky;
+ bottom:0;
+ background:white;
+ border-top:1px solid #ddd;
+ display:flex;
+ justify-content:space-around;
+ padding:10px 5px;
+ z-index:10;
+}
+.nav button{
+ background:none;
+ border:0;
+ font-size:12px;
+ color:#344054;
+}
+.nav span{display:block;font-size:22px}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <header>
-      <h1>🐶 BarberDogs</h1>
-      <p>Mobile Pet Grooming</p>
-    </header>
+<header>
+<img class="logo"
+src="https://raw.githubusercontent.com/dianacagudelom-ops/BarberDogs-app/main/logo.png"
+onerror="this.style.display='none'">
+<h1>🐾 BarberDogs</h1>
+<p>Grooming Pets • Orlando & Kissimmee</p>
 
-    <main class="content">
+<div class="lang">
+<button onclick="setLang('es')">🇪🇸 Español</button>
+<button onclick="setLang('en')">🇺🇸 English</button>
+</div>
+</header>
 
-      <section class="welcome">
-        <h2>¡Hola! 👋</h2>
-        <p>Cuida a tu mascota y reserva su próximo grooming.</p>
-      </section>
+<div class="hero">
+<h2 id="welcome">¡Bienvenido a BarberDogs! 🐶🐱</h2>
+<p id="intro">
+Todo lo que necesitas para cuidar a tu mascota,
+reservar su grooming y mantener sus vacunas al día.
+</p>
 
-      <section class="buttons">
+<button class="btn red" onclick="show('booking')">
+📅 Reservar Grooming
+</button>
+</div>
 
-        <button class="card book">
-          <span class="icon">📅</span>
-          <strong>Reservar cita</strong>
-          <span>Agenda el próximo grooming de tu mascota.</span>
-        </button>
+<div class="cards">
 
-        <button class="card">
-          <span class="icon">🐕</span>
-          <strong>Mis mascotas</strong>
-          <span>Agrega y administra la información de tus mascotas.</span>
-        </button>
+<div class="card" onclick="show('services')">
+<div class="icon">✂️</div>
+<h3>Grooming</h3>
+</div>
 
-        <button class="card">
-          <span class="icon">📋</span>
-          <strong>Mis citas</strong>
-          <span>Consulta tus próximas citas y tu historial.</span>
-        </button>
+<div class="card" onclick="show('vaccines')">
+<div class="icon">💉</div>
+<h3>Vacunas</h3>
+</div>
 
-        <button class="card">
-          <span class="icon">💉</span>
-          <strong>Vacunas</strong>
-          <span>Consulta y recuerda las vacunas de tu mascota.</span>
-        </button>
+<div class="card" onclick="show('tips')">
+<div class="icon">💡</div>
+<h3>Consejos</h3>
+</div>
 
-      </section>
+<div class="card" onclick="show('contact')">
+<div class="icon">📞</div>
+<h3>Contacto</h3>
+</div>
 
-    </main>
+</div>
 
-    <nav>
-      <button>
-        <div>🏠</div>
-        Inicio
-      </button>
+<section id="home">
 
-      <button>
-        <div>🐶</div>
-        Mascotas
-      </button>
+<h2>🐾 Nuestros servicios</h2>
 
-      <button>
-        <div>📅</div>
-        Citas
-      </button>
+<div class="service">
+<strong>✂️ Grooming completo</strong>
+<p>Baño, secado, corte, uñas, oídos y acabado profesional.</p>
+</div>
 
-      <button>
-        <div>👤</div>
-        Cuenta
-      </button>
-    </nav>
+<div class="service">
+<strong>🛁 Spa para mascotas</strong>
+<p>Una experiencia relajante y personalizada.</p>
+</div>
 
-  </div>
+<div class="service">
+<strong>🦷 Higiene dental</strong>
+<p>Limpieza dental sin anestesia según evaluación.</p>
+</div>
+
+<button class="btn" onclick="show('services')">
+Ver todos los servicios
+</button>
+
+</section>
+
+<section id="services" class="hidden">
+
+<h2>✂️ Servicios BarberDogs</h2>
+
+<div class="service">
+<strong>🐶 Grooming para perros</strong>
+<p>Servicio móvil profesional adaptado a cada raza y tipo de manto.</p>
+</div>
+
+<div class="service">
+<strong>🐱 Grooming para gatos</strong>
+<p>Servicio especializado para gatos.</p>
+</div>
+
+<div class="service">
+<strong>🛁 Baño y Spa</strong>
+<p>Baño, secado, cepillado y cuidado general.</p>
+</div>
+
+<div class="service">
+<strong>✂️ Corte y estilo</strong>
+<p>El estilo se adapta a la raza, condición del manto y necesidades de la mascota.</p>
+</div>
+
+<div class="service">
+<strong>🦷 Higiene dental</strong>
+<p>Servicio sujeto a evaluación de comportamiento y condiciones de la mascota.</p>
+</div>
+
+<button class="btn red" onclick="show('booking')">
+📅 Reservar ahora
+</button>
+
+</section>
+
+<section id="booking" class="hidden">
+
+<h2>📅 Reserva tu cita</h2>
+
+<label>Nombre</label>
+<input id="name" placeholder="Tu nombre">
+
+<label>Nombre de la mascota</label>
+<input id="pet" placeholder="Nombre de tu mascota">
+
+<label>Tipo de mascota</label>
+<select id="type">
+<option>Perro</option>
+<option>Gato</option>
+</select>
+
+<label>Servicio</label>
+<select id="service">
+<option>Grooming completo</option>
+<option>Baño y Spa</option>
+<option>Corte y estilo</option>
+<option>Higiene dental</option>
+</select>
+
+<label>Fecha preferida</label>
+<input id="date" type="date">
+
+<label>Mensaje</label>
+<textarea id="message" rows="4"
+placeholder="Cuéntanos algo importante sobre tu mascota"></textarea>
+
+<button class="btn red" onclick="sendBooking()">
+Enviar solicitud
+</button>
+
+<p id="bookingResult"></p>
+
+</section>
+
+<section id="vaccines" class="hidden">
+
+<h2>💉 Calendario de vacunas</h2>
+
+<p>
+Mantén las vacunas de tu mascota actualizadas antes de su servicio
+de grooming.
+</p>
+
+<label>Vacuna</label>
+<select id="vaccine">
+<option>Rabia</option>
+<option>DHPP / Distemper</option>
+<option>Bordetella</option>
+<option>Otra</option>
+</select>
+
+<label>Fecha de aplicación</label>
+<input id="vaccineDate" type="date">
+
+<button class="btn" onclick="saveVaccine()">
+💾 Guardar vacuna
+</button>
+
+<div id="vaccineList"></div>
+
+</section>
+
+<section id="tips" class="hidden">
+
+<h2>💡 Consejos para tu mascota</h2>
+
+<div class="service">
+<strong>🐶 Cepillado</strong>
+<p>
+Cepilla regularmente a tu mascota para ayudar a prevenir nudos
+y mantener el manto saludable.
+</p>
+</div>
+
+<div class="service">
+<strong>🛁 Baños</strong>
+<p>
+La frecuencia depende de la raza, piel, manto y estilo de vida.
+</p>
+</div>
+
+<div class="service">
+<strong>✂️ Mantenimiento</strong>
+<p>
+El mantenimiento en casa es fundamental para evitar nudos y
+mantener un buen resultado entre sesiones.
+</p>
+</div>
+
+<div class="service">
+<strong>🐾 Mascotas senior</strong>
+<p>
+Los perros y gatos mayores necesitan sesiones adaptadas a su edad
+y comodidad.
+</p>
+</div>
+
+</section>
+
+<section id="contact" class="hidden">
+
+<h2>📞 Contacta BarberDogs</h2>
+
+<p>
+¿Tienes preguntas sobre el grooming de tu mascota?
+Estamos para ayudarte.
+</p>
+
+<button class="btn" onclick="window.open('https://www.instagram.com/barberdogs_petgrooming/','_blank')">
+📸 Instagram
+</button>
+
+<button class="btn light"
+onclick="window.location.href='mailto:barberdogs.petgrooming@gmail.com'">
+✉️ Email
+</button>
+
+</section>
+
+<footer>
+<strong>BarberDogs Mobile Pet Grooming</strong>
+<p>Orlando • Kissimmee • Central Florida</p>
+<p>🐾 Cuidamos a tus mascotas como familia.</p>
+</footer>
+
+<div class="nav">
+<button onclick="show('home')">
+<span>🏠</span>Inicio
+</button>
+
+<button onclick="show('services')">
+<span>✂️</span>Servicios
+</button>
+
+<button onclick="show('booking')">
+<span>📅</span>Reservar
+</button>
+
+<button onclick="show('vaccines')">
+<span>💉</span>Vacunas
+</button>
+
+<button onclick="show('contact')">
+<span>📞</span>Contacto
+</button>
+</div>
+
+</div>
+
+<script>
+
+function show(id){
+
+document.querySelectorAll('section').forEach(function(x){
+x.classList.add('hidden');
+});
+
+document.getElementById(id).classList.remove('hidden');
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+function sendBooking(){
+
+let name=document.getElementById('name').value;
+let pet=document.getElementById('pet').value;
+let type=document.getElementById('type').value;
+let service=document.getElementById('service').value;
+let date=document.getElementById('date').value;
+let message=document.getElementById('message').value;
+
+if(!name || !pet || !date){
+
+document.getElementById('bookingResult').innerHTML=
+'⚠️ Completa tu nombre, nombre de mascota y fecha.';
+
+return;
+}
+
+let text=
+'Hola BarberDogs! 🐾%0A%0A'+
+'Nombre: '+name+'%0A'+
+'Mascota: '+pet+'%0A'+
+'Tipo: '+type+'%0A'+
+'Servicio: '+service+'%0A'+
+'Fecha preferida: '+date+'%0A'+
+'Mensaje: '+message;
+
+document.getElementById('bookingResult').innerHTML=
+'✅ Solicitud preparada.';
+
+window.location.href='mailto:barberdogs.petgrooming@gmail.com?subject=Solicitud de Grooming&body='+text;
+
+}
+
+function saveVaccine(){
+
+let vaccine=document.getElementById('vaccine').value;
+let date=document.getElementById('vaccineDate').value;
+
+if(!date){
+alert('Selecciona una fecha.');
+return;
+}
+
+let list=JSON.parse(localStorage.getItem('vaccines')||'[]');
+
+list.push({
+vaccine:vaccine,
+date:date
+});
+
+localStorage.setItem('vaccines',JSON.stringify(list));
+
+displayVaccines();
+
+}
+
+function displayVaccines(){
+
+let list=JSON.parse(localStorage.getItem('vaccines')||'[]');
+
+let html='<h3>📋 Mis vacunas</h3>';
+
+list.forEach(function(v){
+html+=
+'<div class="service">'+
+'<strong>'+v.vaccine+'</strong>'+
+'<p>Fecha: '+v.date+'</p>'+
+'</div>';
+});
+
+document.getElementById('vaccineList').innerHTML=html;
+
+}
+
+function setLang(lang){
+
+if(lang==='en'){
+
+document.getElementById('welcome').innerText=
+'Welcome to BarberDogs! 🐶🐱';
+
+document.getElementById('intro').innerText=
+'Everything you need to care for your pet, book grooming and keep vaccines up to date.';
+
+}else{
+
+document.getElementById('welcome').innerText=
+'¡Bienvenido a BarberDogs! 🐶🐱';
+
+document.getElementById('intro').innerText=
+'Todo lo que necesitas para cuidar a tu mascota, reservar su grooming y mantener sus vacunas al día.';
+
+}
+
+}
+
+displayVaccines();
+
+</script>
 
 </body>
 </html>
